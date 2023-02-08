@@ -1,16 +1,17 @@
 //en el slice pongo el estado inicial de redux. aunque normalmente lo consumiría de api.
 import {createSlice} from '@reduxjs/toolkit'
 
-const initialState = [
+const initialState = {
+    employees : [
 {
     employee_id: "1",
     first_name: "Dolores",
     last_name: "Pizarro",
     email: "lolipizarro@hotmail.com",
     phone_number: 3564625560,
-    hire_date: "07/01/2023",
+    hire_date: "2023-01-01",
     salary: 250000,
-    comission_pct: "10%"
+    commission_pct: "10%"
 },
 { 
 employee_id: "2",
@@ -18,9 +19,9 @@ first_name: "Nicolas",
 last_name: "Merlo",
 email: "nmmerlo@hotmail.com",
 phone_number: 35155462551,
-hire_date: "07/01/2022",
+hire_date: "2023-01-01",
 salary: 250000,
-comission_pct: "10%"
+commission_pct: "10%"
 },
 { 
     employee_id: "3",
@@ -28,9 +29,9 @@ comission_pct: "10%"
     last_name: "Moreira",
     email: "milton_mor@hotmail.com",
     phone_number: 3564546251,
-    hire_date: "05/01/2022",
+    hire_date: "2023-01-01",
     salary: 250000,
-    comission_pct: "10%"
+    commission_pct: "10%"
     },
     { 
         employee_id: "4",
@@ -38,9 +39,9 @@ comission_pct: "10%"
         last_name: "Carranza",
         email: "mili_car@hotmail.com",
         phone_number: 3513424751,
-        hire_date: "05/01/2022",
+        hire_date: "2023-01-01",
         salary: 250000,
-        comission_pct: "10%"
+        commission_pct: "10%"
         },
         { 
             employee_id: "5",
@@ -48,9 +49,9 @@ comission_pct: "10%"
             last_name: "Caballero",
             email: "silvic@hotmail.com",
             phone_number: 3512224751,
-            hire_date: "05/01/2022",
+            hire_date: "2023-01-01",
             salary: 250000,
-            comission_pct: "10%"
+            commission_pct: "10%"
             },
                { 
                 employee_id: "6",
@@ -58,9 +59,9 @@ comission_pct: "10%"
                 last_name: "Montes",
                 email: "flor_montes@hotmail.com",
                 phone_number: 3513524751,
-                hire_date: "05/01/2022",
+                hire_date: "2023-01-01",
                 salary: 250000,
-                comission_pct: "10%"
+                commission_pct: "10%"
                 },
             
                 { 
@@ -69,11 +70,12 @@ comission_pct: "10%"
                     last_name: "Perez",
                     email: "franpe@hotmail.com",
                     phone_number: 3564621859,
-                    hire_date: "05/01/2022",
+                    hire_date: "2023-01-01",
                     salary: 250000,
-                    comission_pct: "10%"
+                    commission_pct: "10%"
                     },
 ]    
+}
     
     
     

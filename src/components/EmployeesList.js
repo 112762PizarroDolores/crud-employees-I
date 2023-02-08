@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function DataGridDemo() {
-    const employees = useSelector(state => state.employees)
+    const {employees} = useSelector(state => state.employees)
     const navigate = useNavigate()
     
 const handleNavigateCreateEmployee= () => {

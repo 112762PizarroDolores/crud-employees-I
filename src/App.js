@@ -1,10 +1,11 @@
 import './App.css';
-import EmployeeForm from './components/EmployeeForm';
+import EmployeeCreate from './components/EmployeeCreate';
 import FullFeaturedCrudGrid from './components/EmployeesList'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import EmployeesList from './components/EmployeesList';
-import EmployeeEdit from './components/EmployeeEdit';
+import EmployeeConfig from './components/EmployeeConfig';
 import NavBar from './components/NavBar' 
+
 
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
        <NavBar/> 
       <Routes>
         <Route path="/"element={<FullFeaturedCrudGrid/>}/> 
-        <Route path="/create-employee" element={<EmployeeForm />}/> 
-        <Route path="/edit-employee/:id" element={<EmployeeEdit />}/> 
+        <Route path="/create-employee" element={<EmployeeCreate />}/> 
+        <Route path="/edit-employee/:id" element={<EmployeeConfig />}/> 
       </Routes>
       
     
