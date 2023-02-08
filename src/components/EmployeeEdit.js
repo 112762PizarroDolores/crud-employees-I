@@ -6,6 +6,26 @@ import {useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 
 export default function EmployeeEdit(props) {
+ //Dolo
+//  const [employee, setEmployee] =useState({
+//   first_name: '',
+//   last_name: ''
+//  })
+
+//  const handleChange = e => {
+//   setEmployee({
+//       ...employee,
+//       [e.target.name]: e.target.value,
+//   });
+//  };
+
+//  const handleSubmit=(e)=> {
+//   e.preventDefault();
+//   console.log(employee);
+// };
+ 
+ 
+ //dolo
   const [thisEmployee, setThisEmployee]=useState(props.employee) 
   const [enable, setEnable]=useState(false)
   const {employees}=useSelector(state=>state.employees)
@@ -34,6 +54,7 @@ const handleEditEmployee=()=>
         <TextField
                label= "First Name"
                value={thisEmployee.first_name}
+               
         />
          <TextField
                label= "Last Name"

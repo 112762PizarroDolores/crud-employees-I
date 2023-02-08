@@ -1,21 +1,30 @@
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
+import { deleteEmployee } from '../features/employees/employeeSlice';
 
 
 export default function DataGridDemo() {
     const {employees} = useSelector(state => state.employees)
     const navigate = useNavigate()
-    
+    const dispatch=useDispatch()
+
 const handleNavigateCreateEmployee= () => {
   navigate('/create-employee')
 }
 
+const handleDelete=(employee_id)=>{
+  console.log(employee_id)
+  dispatch(deleteEmployee(employee_id))
+}
+
+
 const renderDetailsButton = (params) => {
+  console.log(params)
   const handleNavigateEditEmployee= (event) => {
     //console.log(params)
     navigate(`/edit-employee/${params.id}`)
@@ -34,9 +43,9 @@ const renderDetailsButton = (params) => {
             >
                 Details
             </Button>
-            <Button variant="outlined" startIcon={<DeleteIcon />} color="error">
+            <Button variant="outlined" onClick={() => handleDelete(params.id)} startIcon={<DeleteIcon />} color="error">
   Delete
-</Button>
+</Button> 
 
         </strong>
     )

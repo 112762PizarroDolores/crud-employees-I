@@ -77,17 +77,27 @@ commission_pct: "10%"
 ]    
 }
     
-    
-    
+       
 export const employeeSlice = createSlice({
 name: 'employees',
 initialState,
 reducers: {
  addEmployee: (state, action) => {
 console.log(state,action)
+ },
+ //do
+ deleteEmployee: (state, action) => {
+   
+    const employeeFound=state.employees.find(employee=>employee.employee_id===action.payload)
+    if(employeeFound) {
+        state.employees.splice(state.employees.indexOf(employeeFound), 1)
+    }
+    
  }
-}
-})
-
-
+ //do
+},
+});
+//do
+export const {addEmployee, deleteEmployee}=employeeSlice.actions;
+//do
 export default employeeSlice.reducer
