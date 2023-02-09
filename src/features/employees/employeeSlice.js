@@ -1,5 +1,5 @@
 //en el slice pongo el estado inicial de redux. aunque normalmente lo consumiría de api.
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice, current} from '@reduxjs/toolkit'
 
 const initialState = {
     employees : [
@@ -80,7 +80,7 @@ commission_pct: "10%"
        
 export const employeeSlice = createSlice({
 name: 'employees',
-initialState,
+initialState,//esto es lo mismo que deicr initialstate: initialstate
 reducers: {
  addEmployee: (state, action) => {
 console.log(state,action)
@@ -93,11 +93,20 @@ console.log(state,action)
         state.employees.splice(state.employees.indexOf(employeeFound), 1)
     }
     
- }
+ },
  //do
+ editEmployee: (state, action) => {
+   console.log("state", current(state.employees))
+   console.log("action", action.payload)
+    //...agregar en ell array en base a la mod
+
+     //state.employees=[...state.employees, action.payload] 
+     const foundIndex = state.employees.findIndex(employee => employee.employee_id === action.payload.employee_id);
+     state.employees[foundIndex] = action.payload;
+ }
 },
 });
 //do
-export const {addEmployee, deleteEmployee}=employeeSlice.actions;
+export const {addEmployee, deleteEmployee, editEmployee}=employeeSlice.actions;
 //do
 export default employeeSlice.reducer

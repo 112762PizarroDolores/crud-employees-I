@@ -2,16 +2,25 @@ import * as React from 'react';
 import {useState} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import {useSelector } from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
+import { editEmployee } from '../features/employees/employeeSlice';
+import { useNavigate } from 'react-router-dom';
 
+//DOLO: FALTA USEDISPATCH?PORQUE USÉ EL USE SELECTOR PARA TRAER LOS DATOS DEL STATE, PERO AHORA TAMBIEN DEBO MODIFICARLOS..
+//ENTONCES DEBERIA AGREGAR USE DISPATCH PARA HACER EL SAVE..
 export default function EmployeeEdit(props) {
  //Dolo
 //  const [employee, setEmployee] =useState({
 //   first_name: '',
 //   last_name: ''
 //  })
-
+const [thisEmployee, setThisEmployee]=useState(props.employee) 
+const [enable, setEnable]=useState(true)
+const {employees}=useSelector(state=>state.employees)
+const [isEdit, setIsEdit]=useState(false)
+const dispatch=useDispatch()
+const navigate=useNavigate()
 const handleChange = e => {
   console.log(e)
   setThisEmployee({
@@ -28,16 +37,25 @@ const handleChange = e => {
  
  
  //dolo
-  const [thisEmployee, setThisEmployee]=useState(props.employee) 
-  const [enable, setEnable]=useState(true)
-  const {employees}=useSelector(state=>state.employees)
 
-const handleEditEmployee=()=>
+  const handleEditEmployee=()=>
 {
+
   console.log(enable)
   setEnable(!enable)
+  setIsEdit(!isEdit)
+
 }
 
+const handleSaveEmployee=()=>
+{
+  dispatch(editEmployee(thisEmployee))
+  alert("Registro actualizado")
+  setIsEdit(false)
+  setEnable(false)
+  navigate('/')
+
+}
   return (
     <Box
       component="form"
@@ -129,11 +147,11 @@ const handleEditEmployee=()=>
      
             <Button
                 variant="contained"
-                onClick={ handleEditEmployee}
+                onClick={ handleSaveEmployee}
                 color="primary"
                 size="small"
                 style={{ marginLeft: 16 }}
-                disabled
+                disabled={enable?true: false}
             >
                 Save
             </Button>
@@ -143,7 +161,7 @@ const handleEditEmployee=()=>
                 color="primary"
                 size="small"
                 style={{ marginLeft: 16 }}
-             
+                disabled={enable?false: true}
             >
                 Edit
             </Button>
@@ -153,7 +171,7 @@ const handleEditEmployee=()=>
                 color="primary"
                 size="small"
                 style={{ marginLeft: 16 }}
-                disabled
+                disabled={enable?true: false}
                 onChange={handleChange}
             >
                 Cancel
