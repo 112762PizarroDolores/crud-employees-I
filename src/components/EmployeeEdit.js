@@ -21,6 +21,8 @@ const {employees}=useSelector(state=>state.employees)
 const [isEdit, setIsEdit]=useState(false)
 const dispatch=useDispatch()
 const navigate=useNavigate()
+
+
 const handleChange = e => {
   console.log(e)
   setThisEmployee({
@@ -43,7 +45,7 @@ const handleChange = e => {
 
   console.log(enable)
   setEnable(!enable)
-  setIsEdit(!isEdit)
+  // setIsEdit(!isEdit)
 
 }
 
@@ -70,9 +72,10 @@ const handleSaveEmployee=()=>
           label= "Id"
         value={thisEmployee.employee_id}
         disabled
-        // InputProps={{
-        //   readOnly: !enable,
-        // }}
+        //   InputProps={{
+        //     readOnly: !enable,
+        //   }}
+        // onChange={handleChange}
         />
     
         <TextField

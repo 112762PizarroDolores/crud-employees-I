@@ -1,96 +1,83 @@
 import * as React from 'react';
-import {useState} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import {useSelector } from 'react-redux';
+import {useState} from 'react'
 import { Button } from '@mui/material';
-function EmployeeForm() {
-   
-   const [employee, setEmployee] =useState({
-    first_name: '',
-    last_name: ''
-   })
+import { useDispatch } from 'react-redux';
+import { addEmployee } from '../features/employees/employeeSlice';
+import {v4 as uuid} from 'uuid'
 
-//    const handleChange = e => {
-//     setEmployee({
-//         ...employee,
-//         [e.target.name]: e.target.value,
-//     });
-//    };
+function EmployeeCreate() {
 
-//    const handleSubmit=(e)=> {
-//     e.preventDefault();
-//     console.log(employee);
-// };
-    return (
-     
-     <Box
-      component="form"
+const [employee, setEmployee]=useState({
+employee_id: '',
+first_name:'',
+last_name:'',
+email:'',
+phone_number: '',
+hire_Date: '',
+salary:'',
+commission_pct: ''
+})
+
+const dispatch=useDispatch()
+
+const handleChange=e=>{
+setEmployee({
+  ...employee,
+  [e.target.name]: e.target.value,
+})
+}
+const handleSubmit = (e) => {
+e.preventDefault();
+
+dispatch(addEmployee ({
+...employee,
+id: uuid(),
+}) )
+};
+
+
+
+  return (
+    
+    <Box 
+      component="form" 
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& > :not(style)': { m: 1, width: '25ch' },
       }}
       noValidate
       autoComplete="off"
-    >
-      <div>
-        <TextField
-          label= "Id"
-        value=""
       
-        />
-    
-        <TextField
-               name="first_name" 
-               label= "First Name"
-               value=""
-               
-        /><TextField
-        name="last_name"
-              label= "Last Name"
-              value=""
-       />
-        <TextField
-        name="email"
-              label= "Email"
-              value=""
-       />
+    >
       <TextField
-      name="phone_number"
-              label= "Phone Number"
-              value=""
-       />
-        <TextField
-        name="hire_date"
-              label= "Hire Date"
-              value=""
-              type="date"
-              
-       />
-       <TextField
-       name="salary"
-              label= "Salary"
-              value=""
-            
-       />
-       <TextField
-       name="commission_pct"
-              label= "Commission PCT"
-              value=""
-              
-       />
-        </div>
-        <Button variant="contained">Save</Button>
-
-        <Button variant="contained">Cancel</Button>
+      name="employee_id" label="ID" variant="outlined" onChange={handleChange} />
+      <TextField 
+      name= "first_name" label="First Name" variant="outlined" onChange={handleChange}/>
+      <TextField
+      name="last_name" label="Last Name" variant="outlined" onChange={handleChange}/>
+      <TextField 
+      name="email" label="Email" variant="outlined" onChange={handleChange}/>
+      <TextField 
+      name="phone_number"label="Phone Number" variant="outlined" onChange={handleChange} />
+      <TextField
+      name="hire_date" label="Hire Date" type="date" variant="outlined" onChange={handleChange} />
+      <TextField 
+      name="salary" label="Salary" variant="outlined" onChange={handleChange}/>
+      <TextField 
+      name="commission_pct" label="Commission PCT" variant="outlined" onChange={handleChange} />
+  <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                style={{ marginLeft: 16 }}
+                onClick={handleSubmit}
+            >
+                Save
+            </Button>
     </Box>
-  
-    );
+   
+  )
 }
-export default EmployeeForm
 
-//import { useDispatch } from 'react-redux';
-
-//const handleSubmit = (e) => {
- //   e.preventDefault();
-//    console.log(employee);
-//}
+export default EmployeeCreate

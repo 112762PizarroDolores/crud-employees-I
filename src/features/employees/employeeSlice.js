@@ -83,7 +83,9 @@ name: 'employees',
 initialState,//esto es lo mismo que deicr initialstate: initialstate
 reducers: {
  addEmployee: (state, action) => {
-console.log(state,action)
+//console.log(state,action)
+state.employees.push(action.payload)
+//state.employees=[...state,action.payload]
  },
  //do
  deleteEmployee: (state, action) => {
@@ -103,10 +105,18 @@ console.log(state,action)
      //state.employees=[...state.employees, action.payload] 
      const foundIndex = state.employees.findIndex(employee => employee.employee_id === action.payload.employee_id);
      state.employees[foundIndex] = action.payload;
- }
+ },
+//  createEmployee: (state, action) => {
+//     console.log("state", current(state.employees))
+//     console.log("action", action.payload)
+//      //...agregar en ell array en base a la mod
+ 
+//       //state.employees=[...state.employees, action.payload] 
+//       state.employees=[state.employees, ...action.payload] 
+//   }
 },
 });
 //do
-export const {addEmployee, deleteEmployee, editEmployee}=employeeSlice.actions;
+export const {addEmployee, deleteEmployee, editEmployee, }=employeeSlice.actions;
 //do
 export default employeeSlice.reducer
