@@ -6,6 +6,7 @@ import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { addEmployee } from '../features/employees/employeeSlice';
 import {v4 as uuid} from 'uuid'
+import { useNavigate } from 'react-router-dom';
 
 function EmployeeCreate() {
 
@@ -21,6 +22,7 @@ commission_pct: ''
 })
 
 const dispatch=useDispatch()
+const navigate=useNavigate()
 
 const handleChange=e=>{
 setEmployee({
@@ -35,9 +37,11 @@ dispatch(addEmployee ({
 ...employee,
 id: uuid(),
 }) )
+
+alert("Registro insertado correctamente!")
+
+navigate('/')
 };
-
-
 
   return (
     
