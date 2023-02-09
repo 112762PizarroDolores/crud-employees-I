@@ -12,12 +12,13 @@ export default function EmployeeEdit(props) {
 //   last_name: ''
 //  })
 
-//  const handleChange = e => {
-//   setEmployee({
-//       ...employee,
-//       [e.target.name]: e.target.value,
-//   });
-//  };
+const handleChange = e => {
+  console.log(e)
+  setThisEmployee({
+       ...thisEmployee,
+      [e.target.id]: e.target.value,
+   });
+ };
 
 //  const handleSubmit=(e)=> {
 //   e.preventDefault();
@@ -27,11 +28,12 @@ export default function EmployeeEdit(props) {
  
  //dolo
   const [thisEmployee, setThisEmployee]=useState(props.employee) 
-  const [enable, setEnable]=useState(false)
+  const [enable, setEnable]=useState(true)
   const {employees}=useSelector(state=>state.employees)
-console.log(employees)
+
 const handleEditEmployee=()=>
 {
+  console.log(enable)
   setEnable(!enable)
 }
 
@@ -48,15 +50,23 @@ const handleEditEmployee=()=>
         <TextField
           label= "Id"
         value={thisEmployee.employee_id}
-        disabled={enable}
+        disabled
+        // InputProps={{
+        //   readOnly: !enable,
+        // }}
         />
     
         <TextField
+               id="first_name" 
                label= "First Name"
                value={thisEmployee.first_name}
-               
+               InputProps={{
+                readOnly: enable,
+              }}
+              onChange={handleChange}
         />
          <TextField
+         
                label= "Last Name"
                value={thisEmployee.last_name}
         />
