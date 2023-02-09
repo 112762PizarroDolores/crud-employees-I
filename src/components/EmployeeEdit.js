@@ -18,7 +18,8 @@ const handleChange = e => {
        ...thisEmployee,
       [e.target.name]: e.target.value,
    });
- };
+   
+   };
 
 //  const handleSubmit=(e)=> {
 //   e.preventDefault();
@@ -125,7 +126,18 @@ const handleEditEmployee=()=>
         />
       </div>
 
-      <Button
+     
+            <Button
+                variant="contained"
+                onClick={ handleEditEmployee}
+                color="primary"
+                size="small"
+                style={{ marginLeft: 16 }}
+                disabled
+            >
+                Save
+            </Button>
+            <Button
                 variant="contained"
                 onClick={ handleEditEmployee}
                 color="primary"
@@ -134,6 +146,17 @@ const handleEditEmployee=()=>
              
             >
                 Edit
+            </Button>
+            <Button
+                variant="contained"
+                onClick={ handleEditEmployee}
+                color="primary"
+                size="small"
+                style={{ marginLeft: 16 }}
+                disabled
+                onChange={handleChange}
+            >
+                Cancel
             </Button>
     </Box>
   );
