@@ -16,7 +16,7 @@ const handleChange = e => {
   console.log(e)
   setThisEmployee({
        ...thisEmployee,
-      [e.target.id]: e.target.value,
+      [e.target.name]: e.target.value,
    });
  };
 
@@ -57,7 +57,7 @@ const handleEditEmployee=()=>
         />
     
         <TextField
-               id="first_name" 
+               name="first_name" 
                label= "First Name"
                value={thisEmployee.first_name}
                InputProps={{
@@ -66,32 +66,62 @@ const handleEditEmployee=()=>
               onChange={handleChange}
         />
          <TextField
-         
+         name="last_name"
                label= "Last Name"
                value={thisEmployee.last_name}
+               InputProps={{
+                readOnly: enable,
+              }}
+               onChange={handleChange}
         />
          <TextField
+         name="email"
                label= "Email"
                value={thisEmployee.email}
+               InputProps={{
+                readOnly: enable,
+              }}
+               onChange={handleChange}
         />
        <TextField
+       name="phone_number"
                label= "Phone Number"
                value={thisEmployee.phone_number}
+               InputProps={{
+                readOnly: enable,
+              }}
+               onChange={handleChange}
         />
          <TextField
+         name="hire_date"
                label= "Hire Date"
                value={thisEmployee.hire_date}
                type="date"
                InputLabelProps={{shrink:true}}
+               InputProps={{
+                readOnly: enable,
+              }}
+               onChange={handleChange}
+               disabled
               
         />
         <TextField
+        name="salary"
                label= "Salary"
                value={thisEmployee.salary}
+               InputProps={{
+                readOnly: enable,
+              }}
+               onChange={handleChange}
         />
         <TextField
+        name="commission_pct"
                label= "Commission PCT"
                value={thisEmployee.commission_pct}
+               InputProps={{
+                readOnly: enable,
+              }}
+               onChange={handleChange}
         />
       </div>
 
