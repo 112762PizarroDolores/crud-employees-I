@@ -7,15 +7,17 @@ import { Button } from '@mui/material';
 import { editEmployee } from '../features/employees/employeeSlice';
 import { useNavigate } from 'react-router-dom';
 
+
 //DOLO: FALTA USEDISPATCH?PORQUE USÉ EL USE SELECTOR PARA TRAER LOS DATOS DEL STATE, PERO AHORA TAMBIEN DEBO MODIFICARLOS..
 //ENTONCES DEBERIA AGREGAR USE DISPATCH PARA HACER EL SAVE..
-export default function EmployeeEdit(props) {
+export default function EmployeeEdit(props,{navigation}) {
  //Dolo
 //  const [employee, setEmployee] =useState({
 //   first_name: '',
 //   last_name: ''
 //  })
-const [thisEmployee, setThisEmployee]=useState(props.employee) 
+const [thisEmployee, setThisEmployee]=useState(props.employee)//este es empleado local pero que se va a editar
+const [temp, setTemp]=useState({})//estado local para guardar el empelado original que no quiero cambiar
 const [enable, setEnable]=useState(true)
 const {employees}=useSelector(state=>state.employees)
 const [isEdit, setIsEdit]=useState(false)
@@ -29,15 +31,15 @@ const handleChange = e => {
        ...thisEmployee,
       [e.target.name]: e.target.value,
    });
-   
+
    };
 
 //  const handleSubmit=(e)=> {
 //   e.preventDefault();
 //   console.log(employee);
 // };
- 
- 
+
+
  //dolo
 
   const handleEditEmployee=()=>
@@ -45,19 +47,40 @@ const handleChange = e => {
 
   console.log(enable)
   setEnable(!enable)
+  setTemp(thisEmployee)
   // setIsEdit(!isEdit)
 
 }
 
 const handleSaveEmployee=()=>
 {
+
+  // const id = thisEmployee?.employee_id;
   dispatch(editEmployee(thisEmployee))
   alert("Registro actualizado")
   setIsEdit(false)
-  setEnable(false)
-  navigate('/')
+  setEnable(true)
+
 
 }
+const handleCancelEmployee=()=>
+{
+  
+  // e.preventDefault();
+  const id = thisEmployee?.employee_id.toString();
+  console.log(id)
+  // dispatch(editEmployee(thisEmployee))
+   setIsEdit(false)
+   setEnable(true)
+   setThisEmployee(temp)
+   
+   //navigation?.push('edit-employee', {id:id})
+  //  navigate(`/edit-employee/${id}`, { replace: true })
+   
+  navigate('/edit-employee/${id}' )
+}
+
+
   return (
     <Box
       component="form"
@@ -77,9 +100,9 @@ const handleSaveEmployee=()=>
         //   }}
         // onChange={handleChange}
         />
-    
+
         <TextField
-               name="first_name" 
+               name="first_name"
                label= "First Name"
                value={thisEmployee.first_name}
                InputProps={{
@@ -125,7 +148,7 @@ const handleSaveEmployee=()=>
               }}
                onChange={handleChange}
                disabled
-              
+
         />
         <TextField
         name="salary"
@@ -147,14 +170,14 @@ const handleSaveEmployee=()=>
         />
       </div>
 
-     
+
             <Button
                 variant="contained"
                 onClick={ handleSaveEmployee}
                 color="primary"
                 size="small"
                 style={{ marginLeft: 16 }}
-                disabled={enable?true: false}
+                disabled={enable?true: false} //SI ENABLE ESTA EN TRUE, DESHABILITALO
             >
                 Save
             </Button>
@@ -170,12 +193,12 @@ const handleSaveEmployee=()=>
             </Button>
             <Button
                 variant="contained"
-                onClick={ handleEditEmployee}
+                onClick={ handleCancelEmployee}
                 color="primary"
                 size="small"
                 style={{ marginLeft: 16 }}
                 disabled={enable?true: false}
-                onChange={handleChange}
+
             >
                 Cancel
             </Button>

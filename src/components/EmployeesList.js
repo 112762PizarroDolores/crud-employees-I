@@ -6,7 +6,9 @@ import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
 import { deleteEmployee } from '../features/employees/employeeSlice';
-
+import { Margin } from '@mui/icons-material';
+// import { confirmAlert } from 'react-confirm-alert'; // Import
+// import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 export default function DataGridDemo() {
     const {employees} = useSelector(state => state.employees)
@@ -37,6 +39,8 @@ const renderDetailsButton = (params) => {
                 color="primary"
                 size="small"
                 style={{ marginLeft: 16 }}
+                sx={{marginRight: '50px'}}
+              
                 // onClick={() => {
                 //     parseName(params.row.col6)
                 // }}
@@ -76,7 +80,7 @@ const columns = [
   return (
     <>
     <h1>Employees-Vortex</h1>
-    <Box sx={{ height: 400, width: '60%', justifyContent: 'center', alignItems: 'center' }}>
+    <Box sx={{ height: 400, width: '60%', justifyContent: 'center', alignItems: 'center', marginLeft: '28%', maxWidth: '695px'}}>
       <DataGrid
         rows={employees}
         columns={columns}
@@ -86,7 +90,8 @@ const columns = [
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
       />
-       <Button variant="contained" onClick={ handleNavigateCreateEmployee}
+       <Button variant="contained" onClick={ handleNavigateCreateEmployee} 
+       sx={{marginTop: '15px'}}
                      
                  >Create New Employee</Button>
        

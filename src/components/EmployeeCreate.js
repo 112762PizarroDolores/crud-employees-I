@@ -49,7 +49,7 @@ navigate('/')
       component="form" 
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
-      }}
+        height: 400, width: '60%', justifyContent: 'center', alignItems: 'center', marginLeft: '28%', maxWidth: '695px' }}
       noValidate
       autoComplete="off"
       
@@ -65,7 +65,7 @@ navigate('/')
       <TextField 
       name="phone_number"label="Phone Number" variant="outlined" onChange={handleChange} />
       <TextField
-      name="hire_date" label="Hire Date" type="date" variant="outlined" onChange={handleChange} />
+      name="hire_date" label="Hire Date" type="date" variant="outlined" onChange={handleChange} InputLabelProps={{shrink:true}} />
       <TextField 
       name="salary" label="Salary" variant="outlined" onChange={handleChange}/>
       <TextField 
@@ -73,7 +73,7 @@ navigate('/')
   <Button
                 variant="contained"
                 color="primary"
-                size="small"
+                size="large"
                 style={{ marginLeft: 16 }}
                 onClick={handleSubmit}
             >
