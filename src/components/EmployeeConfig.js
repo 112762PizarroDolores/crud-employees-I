@@ -7,9 +7,7 @@ function EmployeeConfig() {
 const employeeId=useParams().id
 
     return (
-     
     <EmployeeEdit employee={employees[employeeId-1]}/>
-  
   )
 }
 

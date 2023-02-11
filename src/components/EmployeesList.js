@@ -6,9 +6,6 @@ import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
 import { deleteEmployee } from '../features/employees/employeeSlice';
-import { Margin } from '@mui/icons-material';
-// import { confirmAlert } from 'react-confirm-alert'; // Import
-// import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 export default function DataGridDemo() {
     const {employees} = useSelector(state => state.employees)
@@ -20,15 +17,11 @@ const handleNavigateCreateEmployee= () => {
 }
 
 const handleDelete=(employee_id)=>{
-  console.log(employee_id)
   dispatch(deleteEmployee(employee_id))
 }
 
-
 const renderDetailsButton = (params) => {
-  console.log(params)
   const handleNavigateEditEmployee= (event) => {
-    //console.log(params)
     navigate(`/edit-employee/${params.id}`)
      }
     return (
@@ -40,10 +33,6 @@ const renderDetailsButton = (params) => {
                 size="small"
                 style={{ marginLeft: 16 }}
                 sx={{marginRight: '50px'}}
-              
-                // onClick={() => {
-                //     parseName(params.row.col6)
-                // }}
             >
                 Details
             </Button>
@@ -55,25 +44,41 @@ const renderDetailsButton = (params) => {
     )
 }
 const columns = [
-  { field: 'employee_id', headerName: 'ID', width: 90 },
+  
+  { 
+    field: 'employee_id', 
+    headerName: 'ID', 
+    width: 90, 
+    align: 'center',
+    headerAlign: 'center',
+
+  },
   {
     field: 'first_name',
     headerName: 'First name',
     width: 150,
     editable: false,
+    align: 'center',
+    headerAlign: 'center',
+
   },
   {
     field: 'last_name',
     headerName: 'Last name',
     width: 150,
     editable: false,
+    align: 'center',
+    headerAlign: 'center',
+
   },
   {
     field: 'actions',
     headerName: 'Actions',
     width: 300,
-   renderCell: renderDetailsButton,
+    renderCell: renderDetailsButton,
     disableClickEventBubbling: true,
+    align: 'center',
+    headerAlign: 'center',
 },
  
 ];
@@ -92,9 +97,7 @@ const columns = [
       />
        <Button variant="contained" onClick={ handleNavigateCreateEmployee} 
        sx={{marginTop: '15px'}}
-                     
                  >Create New Employee</Button>
-       
     </Box>
     </>
   );

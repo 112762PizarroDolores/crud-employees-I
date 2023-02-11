@@ -1,8 +1,8 @@
 //en el slice pongo el estado inicial de redux. aunque normalmente lo consumiría de api.
-import {createSlice, current} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-    employees : [
+employees : [
 {
     employee_id: "1",
     first_name: "Dolores",
@@ -76,18 +76,14 @@ commission_pct: "10%"
                     },
 ]    
 }
-    
        
 export const employeeSlice = createSlice({
 name: 'employees',
-initialState,//esto es lo mismo que deicr initialstate: initialstate
+initialState,
 reducers: {
  addEmployee: (state, action) => {
-//console.log(state,action)
 state.employees.push(action.payload)
-//state.employees=[...state,action.payload]
  },
- //do
  deleteEmployee: (state, action) => {
    
     const employeeFound=state.employees.find(employee=>employee.employee_id===action.payload)
@@ -96,27 +92,12 @@ state.employees.push(action.payload)
     }
     
  },
- //do
  editEmployee: (state, action) => {
-   console.log("state", current(state.employees))
-   console.log("action", action.payload)
-    //...agregar en ell array en base a la mod
-
-     //state.employees=[...state.employees, action.payload] 
      const foundIndex = state.employees.findIndex(employee => employee.employee_id === action.payload.employee_id);
      state.employees[foundIndex] = action.payload;
  },
-//  createEmployee: (state, action) => {
-//     console.log("state", current(state.employees))
-//     console.log("action", action.payload)
-//      //...agregar en ell array en base a la mod
- 
-//       //state.employees=[...state.employees, action.payload] 
-//       state.employees=[state.employees, ...action.payload] 
-//   }
+
 },
 });
-//do
 export const {addEmployee, deleteEmployee, editEmployee, }=employeeSlice.actions;
-//do
 export default employeeSlice.reducer
