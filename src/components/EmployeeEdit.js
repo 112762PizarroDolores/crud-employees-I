@@ -22,7 +22,6 @@ const handleChange = e => {
    });
 }
 
-
 const handleEditEmployee = () => {
   setEnable(!enable);
   setTemp(thisEmployee);
