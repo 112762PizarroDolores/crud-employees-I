@@ -5,14 +5,13 @@ import {useState} from 'react'
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addEmployee } from '../features/employees/employeeSlice';
-// import {v4 as uuid} from 'uuid'
 import { useNavigate } from 'react-router-dom';
 
 function EmployeeCreate() {
   const {employees}=useSelector(state=>state.employees)
   const proxId=Number(employees[employees.length -1].employee_id)+1
 
-const [employee, setEmployee]=useState({
+const [employee, setEmployee]=useState({ //estado local para guardar lo introducido por form
 employee_id: proxId,
 first_name:'',
 last_name:'',
@@ -39,7 +38,7 @@ e.preventDefault();
 if(validateEmployee(employee)) {
   dispatch(addEmployee ({
     ...employee,
-     // id: uuid(),
+    
     }));
     alert("Record inserted successfully!");
     navigate('/');

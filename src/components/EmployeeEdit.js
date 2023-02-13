@@ -84,7 +84,7 @@ const handleCancelEmployee = () => {
   setEnable(true);
   setThisEmployee(temp);
   // eslint-disable-next-line no-template-curly-in-string
-  navigate('/edit-employee/${id}');
+  navigate(`/edit-employee/${thisEmployee.employee_id}`);
 }
 
   return (

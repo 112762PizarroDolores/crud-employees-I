@@ -83,6 +83,7 @@ initialState,
 reducers: {
  addEmployee: (state, action) => {
 state.employees.push(action.payload)
+//[...state, action.payload]
  },
  deleteEmployee: (state, action) => {
    
