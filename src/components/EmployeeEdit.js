@@ -7,7 +7,7 @@ import { Button } from '@mui/material';
 import { editEmployee } from '../features/employees/employeeSlice';
 import { useNavigate } from 'react-router-dom';
 
-export default function EmployeeEdit(props,{navigation}) {
+export default function EmployeeEdit(props) {
 
 const [thisEmployee, setThisEmployee]=useState(props.employee)
 const [temp, setTemp]=useState({})
@@ -83,7 +83,7 @@ const handleCancelEmployee = () => {
   setIsEdit(false);
   setEnable(true);
   setThisEmployee(temp);
-  // eslint-disable-next-line no-template-curly-in-string
+
   navigate(`/edit-employee/${thisEmployee.employee_id}`);
 }
 
