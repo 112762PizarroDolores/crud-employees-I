@@ -6,6 +6,8 @@ import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
 import { deleteEmployee } from '../features/employees/employeeSlice';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import LoupeIcon from '@mui/icons-material/Loupe'; 
 
 export default function DataGridDemo() {
     const {employees} = useSelector(state => state.employees)
@@ -31,8 +33,10 @@ const renderDetailsButton = (params) => {
                 onClick={ handleNavigateEditEmployee}
                 color="primary"
                 size="small"
+                startIcon={<LoupeIcon />} 
                 style={{ marginLeft: 16 }}
                 sx={{marginRight: '50px'}}
+                
             >
                 Details
             </Button>
@@ -95,7 +99,7 @@ const columns = [
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
       />
-       <Button variant="contained" onClick={ handleNavigateCreateEmployee} 
+       <Button variant="contained" startIcon={<PersonAddAltIcon />} color="primary" onClick={ handleNavigateCreateEmployee} 
        sx={{marginTop: '15px'}}
                  >Create New Employee</Button>
     </Box>

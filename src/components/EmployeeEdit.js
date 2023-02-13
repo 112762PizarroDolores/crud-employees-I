@@ -6,6 +6,9 @@ import { useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
 import { editEmployee } from '../features/employees/employeeSlice';
 import { useNavigate } from 'react-router-dom';
+import CancelIcon from '@mui/icons-material/Cancel';
+import EditIcon from '@mui/icons-material/Edit';
+import SaveIcon from '@mui/icons-material/Save';
 
 export default function EmployeeEdit(props) {
 
@@ -157,6 +160,7 @@ const handleCancelEmployee = () => {
                 variant="contained"
                 onClick={ handleSaveEmployee}
                 color="primary"
+                startIcon={<SaveIcon />} 
                 size="small"
                 style={{ marginLeft: 16 }}
                 disabled={enable?true: false}>
@@ -166,6 +170,7 @@ const handleCancelEmployee = () => {
                 variant="contained"
                 onClick={ handleEditEmployee}
                 color="primary"
+                startIcon={<EditIcon />} 
                 size="small"
                 style={{ marginLeft: 16 }}
                 disabled={enable?false: true}>
@@ -175,6 +180,7 @@ const handleCancelEmployee = () => {
                 variant="contained"
                 onClick={ handleCancelEmployee}
                 color="primary"
+                startIcon={<CancelIcon />} 
                 size="small"
                 style={{ marginLeft: 16 }}
                 disabled={enable?true: false}>

@@ -6,6 +6,8 @@ import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addEmployee } from '../features/employees/employeeSlice';
 import { useNavigate } from 'react-router-dom';
+import CancelIcon from '@mui/icons-material/Cancel';
+import CheckIcon from '@mui/icons-material/Check';
 
 function EmployeeCreate() {
   const {employees}=useSelector(state=>state.employees)
@@ -61,7 +63,10 @@ const validateEmployee = (employee) => {
   }
 
 }
+const handleCancelEmployee = () => {
 
+  navigate('/');
+}
   const getErrorString = (prop) => {
    switch (prop) {
         case 'employee_id':
@@ -116,10 +121,21 @@ const validateEmployee = (employee) => {
             <Button
                 variant="contained"
                 color="primary"
+                startIcon={<CheckIcon />} 
                 size="large"
                 style={{ marginLeft: 16 }}
                 onClick={handleSubmit}>
                 Save
+            </Button>
+            <Button
+                variant="contained"
+                onClick={ handleCancelEmployee}
+                color="primary"
+                startIcon={<CancelIcon />} 
+                size="large"
+                style={{ marginLeft: 16 }}
+                >
+                Cancel
             </Button>
     </Box>
    </>
