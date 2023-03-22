@@ -1,7 +1,7 @@
 import './App.css';
 import EmployeeCreate from './components/EmployeeCreate';
 import EmployeeConfig from './components/EmployeeConfig';
-import EmployeeList from './components/EmployeesList';
+import EmployeeList from './Pages/Index';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import NavBar from './components/NavBar' 
 
