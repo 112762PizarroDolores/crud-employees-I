@@ -8,6 +8,14 @@ const api = {
         .then((res) => res)
         .catch((err) => err);
     }, 
+    //get employee by id
+    getEmployeeById: async (employeeId) => {
+        const url = 'http://localhost:3001/api/employees/' + employeeId.toString();
+        return await axios
+          .get(url)
+          .then((res) => res.data)
+          .catch((err) => err);
+      }, 
     //delete
     deleteEmployee: async(employeeId) => {
         const url = 'http://localhost:3001/api/employees/' + employeeId.toString();
@@ -24,10 +32,10 @@ const api = {
         .catch((err) => err);
     },
     //update
-    updateEmployee: async(employeeId, body) => {
-        const url = 'http://localhost:3001/api/employees/' + employeeId.toString();
+    updateEmployee: async(id, body) => {
+        const url = 'http://localhost:3001/api/employees/' + id.toString();
         return await axios
-        .put(url)
+        .put(url, body)
         .then((res) => res)
         .catch((err) => err);
     }

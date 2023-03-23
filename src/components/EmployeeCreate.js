@@ -86,8 +86,7 @@ const handleCancelEmployee = () => {
         return 'join_date';
         case 'rol':
         return 'rol';
-        // case 'commission_pct':
-        // return 'Commission PCT';
+        
       default:
         break;
     }
