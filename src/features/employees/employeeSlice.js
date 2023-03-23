@@ -1,8 +1,12 @@
 //en el slice pongo el estado inicial de redux. aunque normalmente lo consumiría de api.
 import {createSlice} from '@reduxjs/toolkit'
+// import axios from 'axios';
+// import api from '../../services/api';
 
+// const employees= api.getAllEmployees()
 const initialState = {
-employees : [
+
+employees : []
 // {
 //     employee_id: "1",
 //     first_name: "Dolores",
@@ -74,7 +78,7 @@ employees : [
 //                     salary: 250000,
 //                     commission_pct: "10%"
 //                     },
-]    
+
 }
        
 export const employeeSlice = createSlice({

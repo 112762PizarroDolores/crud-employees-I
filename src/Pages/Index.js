@@ -3,13 +3,17 @@ import * as React from 'react';
 import {useState, useEffect} from 'react'
 import Box from '@mui/material/Box';
 import { DataGrid, GridSearchIcon } from '@mui/x-data-grid';
-import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
 import { deleteEmployee } from '../features/employees/employeeSlice';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import LoupeIcon from '@mui/icons-material/Loupe'; 
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
+import api from '../services/api';
 export default function DataGridEmployees() {
     const {employees} = useSelector(state => state.employees)
     const navigate = useNavigate()
@@ -21,10 +25,8 @@ export default function DataGridEmployees() {
     const [firstNameInput, setFirstNameInput] = useState([])
     const [lastNameInput, setLastNameInput] = useState([])
 
-    useEffect(() => {
-      fetch("http://localhost:3001/api/employees")
-        .then((res) => res.json())
-        .then((res) => setTableData(res.data))
+    useEffect(() => { 
+      getEmployees();
     }, [])
   // if(isLoading) return <div> <h1>Loading...</h1>  </div>;
   // else if(isError) return <div> Error {error.message} </div>;
@@ -54,27 +56,30 @@ export default function DataGridEmployees() {
   }
 
   const handleSearch = () => {
-    fetch(getUrl())
-      .then((res) => res.json())
-      .then((res) => setTableData(res.data))
+    getEmployees();
+
   }
+
+  const getEmployees = () => {
+    api.getAllEmployees(getUrl()).then((res) => {
+      setTableData(res.data ? res.data.data : [])
+    });
+  }; 
 
   const getUrl= () => {
     const nombre = firstNameInput.length;
     const apellido = lastNameInput.length;
     const rol = roleInput.length;
     let basicUrl = "http://localhost:3001/api/employees?" + (nombre ? "first_name=" + firstNameInput : '') + (apellido ? "&last_name=" + lastNameInput : '') + (rol ? "&rol=" + roleInput : '');
-    console.log(basicUrl)
     return basicUrl;
   }
-
 
 const handleNavigateCreateEmployee= () => {
   navigate('/create-employee')
 }
 
-const handleDelete=(employee_id)=>{
-  dispatch(deleteEmployee(employee_id))
+const handleDelete=(id)=>{
+  api.deleteEmployee(id)
 }
 
 const renderDetailsButton = (params) => {
