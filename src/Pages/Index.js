@@ -57,7 +57,6 @@ export default function DataGridEmployees() {
 
   const handleSearch = () => {
     getEmployees();
-
   }
 
   const getEmployees = () => {
@@ -79,7 +78,13 @@ const handleNavigateCreateEmployee= () => {
 }
 
 const handleDelete=(id)=>{
-  api.deleteEmployee(id)
+  api.deleteEmployee(id).then(res => {
+    if(res) {
+      getEmployees()
+    } else {
+      
+    }
+  })
 }
 
 const renderDetailsButton = (params) => {

@@ -44,8 +44,7 @@ export default function EmployeeEdit(props) {
   //
   const handleSaveEmployee = () => {
     if (validateEmployee(employee)) {
-      const url = `http://localhost:3001/api/employees + ${this.employee.id_employee}.toString()`;
-      api.updateEmployee(url, employee);
+      api.updateEmployee(employee.id_employee ,employee);
 
       dispatch(editEmployee(employee));
 
@@ -126,21 +125,25 @@ export default function EmployeeEdit(props) {
             name="first_name"
             label="First Name"
             value={employee.first_name ? employee.first_name : ''}
+            onChange={handleChange}
           />
           <TextField
             name="last_name"
             label="Last Name"
             value={employee.last_name ? employee.last_name : ''}
+            onChange={handleChange}
           />
           <TextField
             name="cuit"
             label="Cuit"
             value={employee.cuit ? employee.cuit : ''}
+            onChange={handleChange}
           />
           <TextField
             name="team_id"
             label="Team_id"
             value={employee.team_id ? employee.team_id : ''}
+            onChange={handleChange}
           />
           <TextField
             name="join_date"
@@ -148,13 +151,13 @@ export default function EmployeeEdit(props) {
             type="date"
             value={employee.join_date ? employee.join_date : ''}
             InputLabelProps={{ shrink: true }}
-            disabled
+            onChange={handleChange}
           />
           <TextField 
           name="rol" 
           label="Rol"
           value={employee.rol ? employee.rol : ''}
-
+          onChange={handleChange}
           />
         </div>
 

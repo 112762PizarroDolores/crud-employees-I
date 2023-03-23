@@ -33,7 +33,7 @@ const api = {
     },
     //update
     updateEmployee: async(id, body) => {
-        const url = 'http://localhost:3001/api/employees/' + id.toString();
+        const url = "http://localhost:3001/api/employees/" + id;
         return await axios
         .put(url, body)
         .then((res) => res)
