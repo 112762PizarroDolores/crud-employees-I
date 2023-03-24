@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckIcon from '@mui/icons-material/Check';
 import api from '../services/api';
+import swal from "sweetalert";
 
 function EmployeeCreate() {
   const {employees}=useSelector(state=>state.employees)
@@ -40,13 +41,16 @@ const handleSubmit = (e) => {
 e.preventDefault();
 if(validateEmployee(employee)) {
    const url = "http://localhost:3001/api/employees"
-   api.createEmployee(url, employee)
-    dispatch(addEmployee ({
-    ...employee,
+   api.createEmployee(url, employee).then(res => {
+    if(res) {
+      dispatch(addEmployee ({
+        ...employee,
+        }));
+        alert("Record inserted successfully!");
+        navigate('/');
+    }
+   })
     
-    }));
-    alert("Record inserted successfully!");
-    navigate('/');
 }
 };
 
@@ -62,7 +66,7 @@ const validateEmployee = (employee) => {
         errArray.push(errMsg);
       }
     })
-    alert('Incomplete. You must complete all the required fields.\nRemaining field/s: \n'  + errArray.join('\n'));
+    swal('Incomplete. You must complete all the required fields.\nRemaining field/s: \n'  + errArray.join('\n'));
   }
 
 }

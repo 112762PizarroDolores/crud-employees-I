@@ -11,6 +11,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import api from "../services/api";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 export default function EmployeeEdit(props) {
   const [employee, setEmployee] = useState({});
@@ -44,13 +45,14 @@ export default function EmployeeEdit(props) {
   //
   const handleSaveEmployee = () => {
     if (validateEmployee(employee)) {
-      api.updateEmployee(employee.id_employee ,employee);
-
-      dispatch(editEmployee(employee));
-
-      alert("Record updated!");
-      setIsEdit(false);
-      setEnable(true);
+      api.updateEmployee(employee.id_employee, employee).then((res) => {
+        if (res) {
+          dispatch(editEmployee(employee));
+          alert("Record updated!");
+          setIsEdit(false);
+          setEnable(true);
+        }
+      });
     }
   };
 
@@ -67,10 +69,8 @@ export default function EmployeeEdit(props) {
           errArray.push(errMsg);
         }
       });
-      alert(
-        "Incomplete. You must complete all the required fields.\nRemaining field/s: \n" +
-          errArray.join("\n")
-      );
+      swal('Incomplete. You must complete all the required fields.\nRemaining field/s: \n'  + errArray.join('\n'));
+      
     }
   };
 
