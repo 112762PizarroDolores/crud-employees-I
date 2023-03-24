@@ -8,10 +8,15 @@ export default function SvgIconsSize() {
     const handleNavigateHome= () => {
       navigate('/')
     }
+    const handleNavigateAssets= () => {
+      navigate('/assets')
+    }
   return (
     <Box
       sx={{'& > :not(style)': {m: 2,}, }}>
        <Button variant="outlined" startIcon={<HomeIcon />} color="primary" size="big" onClick={ handleNavigateHome}>Home</Button>
+
+       <Button variant="outlined" color="primary" size="big" onClick={ handleNavigateAssets}>Assets</Button>
     </Box>
     
   );
