@@ -85,6 +85,7 @@ export const employeeSlice = createSlice({
 name: 'employees',
 initialState,
 reducers: {
+    //mi estado de redux recibe allEmployees de la APIREST (y atraves de ella de la BD)
  addEmployee: (state, action) => {
 state.employees.push(action.payload)
 //[...state, action.payload]
