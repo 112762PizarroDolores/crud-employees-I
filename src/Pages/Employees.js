@@ -12,6 +12,9 @@ import Button from "@mui/material/Button";
 import swal from "sweetalert";
 import api from "../services/api";
 import { exportedColumns } from "../constants";
+import { addEmployee } from "../features/employees/employeeSlice";
+import { DisplaySettingsRounded } from "@mui/icons-material";
+
 export default function DataGridEmployees() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -48,6 +51,9 @@ export default function DataGridEmployees() {
       
       if(res.data.data.length>0){
         setTableData(res.data ? res.data.data : []);
+        //state redux con getALL
+        dispatch(addEmployee(res.data.data))
+        console.log(res.data.data)
       }
       else{
         swal('No data found. Please check the filters');

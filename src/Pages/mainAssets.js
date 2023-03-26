@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import swal from "sweetalert";
 import api from "../services/api";
 import { exportedColumns } from "../constantsAssets";
+import { addAsset } from "../features/assetSlice";
 export default function DataGridAssets() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -49,6 +50,8 @@ export default function DataGridAssets() {
       
       if(res.data.data.length>0){
         setTableData(res.data ? res.data.data : []);
+              //state redux con getALLAssets
+              dispatch(addAsset(res.data.data))
       }
       else{
         swal('No data found. Please check the filters');
