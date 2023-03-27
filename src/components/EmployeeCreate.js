@@ -42,13 +42,20 @@ e.preventDefault();
 if(validateEmployee(employee)) {
    const url = "http://localhost:3001/api/employees"
    api.createEmployee(url, employee).then(res => {
-    if(res) {
-      dispatch(addEmployee ({
+console.log(res);
+
+    if(res.status===201) {
+        dispatch(addEmployee ({
         ...employee,
         }));
-        alert("Record inserted successfully!");
+        swal("Employee inserted successfully!");
         navigate('/');
     }
+    else {
+      swal (res.data.message);
+    }
+
+
    })
     
 }

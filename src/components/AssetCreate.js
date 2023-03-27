@@ -41,13 +41,17 @@ const handleSubmit = (e) => {
 e.preventDefault();
 if(validateAsset(asset)) {
    const url = "http://localhost:3001/api/assets"
-   api.createAsset(url, asset).then(res => {
-    if(res) {
-      dispatch(addAsset ({
-        ...asset,
-        }));
-        alert("Record inserted successfully!");
-        navigate('/');
+    api.createAsset(url, asset).then(res => {
+      if(res.status===201) {
+        swal("Asset inserted successfully!");
+        dispatch(addAsset ({
+          ...asset,
+          }));
+        navigate('/assets');
+        
+    }
+    else {
+      swal (res.data.message);
     }
    })
     
@@ -107,10 +111,7 @@ const handleCancelAsset = () => {
          alignItems: 'center', marginLeft: '28%', maxWidth: '695px' }}
       noValidate
       autoComplete="off">
-      {/* <TextField
-      name="id_asset" value= {proxId} label="ID" variant="outlined"  InputProps={{
-        readOnly: true,
-      }} onChange={handleChange} /> */}
+      
       <TextField 
       name= "name" label="Name" variant="outlined" onChange={handleChange}/>
       <TextField
