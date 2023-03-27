@@ -165,6 +165,7 @@ export default function AssetEdit(props) {
           label="Purchase_date"
           type="date"
           value={asset.purchase_date ? format (new Date (asset.purchase_date ), 'yyyy-MM-dd'): ''}
+          InputLabelProps={{ shrink: true}}
           onChange={handleChange}
           disabled={enable}
           />

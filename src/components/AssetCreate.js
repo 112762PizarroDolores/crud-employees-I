@@ -122,8 +122,8 @@ const handleCancelAsset = () => {
       <TextField
       name="description" label="Description" type="description" variant="outlined" onChange={handleChange} InputLabelProps={{shrink:true}} />
       <TextField 
-      name="purchase_date" label="Purchase_date" type="purchase_date" variant="outlined" onChange={handleChange}/>
-         <TextField 
+      name="purchase_date" label="Purchase_date" type="date" variant="outlined" onChange={handleChange} InputLabelProps={{shrink:true}}/>
+      <TextField 
       name="id_employee" label="ID_employee" type="id_employee" variant="outlined" onChange={handleChange}/>
       {/* <TextField 
       name="commission_pct" type="number" label="Commission PCT" variant="outlined" onChange={handleChange} /> */}
