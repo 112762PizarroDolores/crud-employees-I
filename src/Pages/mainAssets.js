@@ -191,9 +191,9 @@ export default function DataGridAssets() {
         <DataGrid
           rows={tableData}
           columns={columns}
-          pageSize={25}
+          pageSize={15}
           getRowId={(row) => row.id_asset}
-          rowsPerPageOptions={[25]}
+          //rowsPerPageOptions={[25]}
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
         />

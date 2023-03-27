@@ -12,12 +12,14 @@ import SaveIcon from "@mui/icons-material/Save";
 import api from "../services/api";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
+import {format} from "date-fns";
+
 
 export default function EmployeeEdit(props) {
   const [employee, setEmployee] = useState({});
   const [temp, setTemp] = useState({});
   const [enable, setEnable] = useState(true);
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -37,6 +39,7 @@ export default function EmployeeEdit(props) {
   }, []);
 
   const handleEditEmployee = () => {
+    setIsEdit(false);
     setEnable(!enable);
     // setTemp(thisEmployee);
   };
@@ -126,38 +129,44 @@ export default function EmployeeEdit(props) {
             label="First Name"
             value={employee.first_name ? employee.first_name : ''}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField
             name="last_name"
             label="Last Name"
             value={employee.last_name ? employee.last_name : ''}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField
             name="cuit"
             label="Cuit"
             value={employee.cuit ? employee.cuit : ''}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField
             name="team_id"
             label="Team_id"
             value={employee.team_id ? employee.team_id : ''}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField
             name="join_date"
             label="Join Date"
             type="date"
-            value={employee.join_date ? employee.join_date : ''}
+            value={employee.join_date ? format (new Date (employee.join_date), 'yyyy-MM-dd') : ''}
             InputLabelProps={{ shrink: true }}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField 
           name="rol" 
           label="Rol"
           value={employee.rol ? employee.rol : ''}
           onChange={handleChange}
+          disabled={enable}
           />
         </div>
 

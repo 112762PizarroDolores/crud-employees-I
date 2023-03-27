@@ -12,6 +12,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import api from "../services/api";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
+import {format} from "date-fns";
 
 export default function AssetEdit(props) {
   const [asset, setAsset] = useState({});
@@ -127,24 +128,28 @@ export default function AssetEdit(props) {
             label="Name"
             value={asset.name ? asset.name : ''}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField
             name="type"
             label="Type"
             value={asset.type ? asset.type : ''}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField
             name="code"
             label="Code"
             value={asset.code ? asset.code : ''}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField
             name="marca"
             label="Marca"
             value={asset.marca ? asset.marca : ''}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField
             name="description"
@@ -153,18 +158,22 @@ export default function AssetEdit(props) {
             value={asset.description ? asset.description : ''}
             InputLabelProps={{ shrink: true }}
             onChange={handleChange}
+            disabled={enable}
           />
           <TextField 
           name="purchase_date" 
           label="Purchase_date"
-          value={asset.purchase_date ? asset.purchase_date : ''}
+          type="date"
+          value={asset.purchase_date ? format (new Date (asset.purchase_date ), 'yyyy-MM-dd'): ''}
           onChange={handleChange}
+          disabled={enable}
           />
           <TextField 
           name="id_employee" 
           label="Id_employee"
           value={asset.id_employee ? asset.id_employee : ''}
           onChange={handleChange}
+          disabled={enable}
           />
         </div>
 
