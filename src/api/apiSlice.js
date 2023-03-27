@@ -7,7 +7,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001" }),
   endpoints: (builder) => ({
     getEmployees: builder.query({
-      query: () => "/api/employees", //?page=1&limit=20
+      query: () => "/api/employees", 
     }),
   }),
 });
