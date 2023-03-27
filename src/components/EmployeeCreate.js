@@ -122,8 +122,7 @@ const handleCancelEmployee = () => {
       name="join_date" label="Join_date" type="date" variant="outlined" onChange={handleChange} InputLabelProps={{shrink:true}} />
       <TextField 
       name="rol" label="Rol" type="rol" variant="outlined" onChange={handleChange}/>
-      {/* <TextField 
-      name="commission_pct" type="number" label="Commission PCT" variant="outlined" onChange={handleChange} /> */}
+      
             <Button
                 variant="contained"
                 color="primary"
