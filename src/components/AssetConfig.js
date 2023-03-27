@@ -4,7 +4,7 @@ import AssetEdit from "./AssetEdit"
 
 function AssetConfig() {
   const {assets}=useSelector(state=>state.assets)
-  console.log(assets);
+  // console.log(assets);
 const assetId=useParams().id
 
     return (

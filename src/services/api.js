@@ -99,7 +99,8 @@ const api = {
           .put(url, body)
           .then((res) => res)
           .catch((err) => {
-              swal(err.response.data.errors[0].msg);
+              console.log(err)
+              swal(err.response.data.message);
           });
       }
 };

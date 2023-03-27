@@ -45,14 +45,22 @@ export default function AssetEdit(props) {
   //'http://localhost:3001/api/assets/' + assetId.toString();
   //
   const handleSaveAsset = () => {
-    if (validateAsset(asset)) {
+      if (validateAsset(asset)) {
       api.updateAsset(asset.id_asset, asset).then((res) => {
-        if (res) {
+        console.log(res);
+        if (res.status===200) {
+          swal("Asset updated!");
           dispatch(editAsset(asset));
-          alert("Record updated!");
           setIsEdit(false);
           setEnable(true);
-        }
+          navigate('/assets');
+        }console.log(res)
+        // else{
+        //   swal (res.message);
+        // }
+      }).catch(function (error) {
+         swal (error.response.data.message);
+        console.log(error)
       });
     }
   };
