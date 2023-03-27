@@ -193,18 +193,16 @@ export default function DataGridAssets() {
           columns={columns}
           pageSize={15}
           getRowId={(row) => row.id_asset}
-          //rowsPerPageOptions={[25]}
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
         />
         <Button
           variant="contained"
-          // startIcon={<PersonAddAltIcon />}
           color="primary"
           onClick={handleNavigateCreateAsset}
           sx={{ marginTop: "15px" }}
         >
-          Create New Asset
+          + Create New Asset
         </Button>
       </Box>
     </>

@@ -13,7 +13,7 @@ import swal from "sweetalert";
 import api from "../services/api";
 import { exportedColumns } from "../constants";
 import { addEmployee } from "../features/employees/employeeSlice";
-import { DisplaySettingsRounded } from "@mui/icons-material";
+
 
 export default function DataGridEmployees() {
   const navigate = useNavigate();

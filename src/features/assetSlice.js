@@ -13,7 +13,7 @@ initialState,
 reducers: {
  addAsset: (state, action) => {
 state.assets.push(action.payload)
-//[...state, action.payload]
+
  },
  deleteAsset: (state, action) => {
    

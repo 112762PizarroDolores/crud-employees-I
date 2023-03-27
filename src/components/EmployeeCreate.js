@@ -13,17 +13,17 @@ import swal from "sweetalert";
 
 function EmployeeCreate() {
   const {employees}=useSelector(state=>state.employees)
-  // const proxId=Number(employees[employees.length -1].employee_id)+1
+
 
 const [employee, setEmployee]=useState({ //estado local para guardar lo introducido por form
-// id_employee: proxId,
+
 first_name:'',
 last_name:'',
 cuit:'',
 team_id: '',
 join_date: '',
 rol:''
-// commission_pct: ''
+
 });
 
 let errArray = [];
@@ -113,10 +113,7 @@ const handleCancelEmployee = () => {
          alignItems: 'center', marginLeft: '28%', maxWidth: '695px' }}
       noValidate
       autoComplete="off">
-      {/* <TextField
-      name="employee_id" value= {proxId} label="ID" variant="outlined"  InputProps={{
-        readOnly: true,
-      }} onChange={handleChange} /> */}
+   
       <TextField 
       name= "first_name" label="First Name" variant="outlined" onChange={handleChange}/>
       <TextField

@@ -51,7 +51,7 @@ export default function EmployeeEdit(props) {
       api.updateEmployee(employee.id_employee, employee).then((res) => {
         if (res) {
           dispatch(editEmployee(employee));
-          alert("Record updated!");
+          swal("Asset updated successfully!");
           setIsEdit(false);
           setEnable(true);
         }

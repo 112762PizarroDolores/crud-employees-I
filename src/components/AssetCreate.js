@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {useState} from 'react'
 import { Button } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addAsset } from '../features/assetSlice';
 import { useNavigate } from 'react-router-dom';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -12,11 +12,9 @@ import api from '../services/api';
 import swal from "sweetalert";
 
 function AssetCreate() {
-  //const {assets}=useSelector(state=>state.assets)
-  // const proxId=Number(employees[employees.length -1].employee_id)+1
-
+  
 const [asset, setAsset]=useState({ //estado local para guardar lo introducido por form
-// id_asset: proxId,
+
 name:'',
 type:'',
 code:'',

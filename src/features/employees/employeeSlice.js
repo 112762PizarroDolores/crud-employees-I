@@ -1,7 +1,7 @@
 //en el slice pongo el estado inicial de redux. aunque normalmente lo consumiría de api.
 import {createSlice} from '@reduxjs/toolkit'
 
-// const employees= api.getAllEmployees()
+
 const initialState = {
 
 employees : []
@@ -14,7 +14,7 @@ reducers: {
     //mi estado de redux recibe allEmployees de la APIREST (y atraves de ella de la BD)
  addEmployee: (state, action) => {
 state.employees.push(action.payload)
-//[...state, action.payload]
+
  },
  deleteEmployee: (state, action) => {
    
