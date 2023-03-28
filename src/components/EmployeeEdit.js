@@ -41,19 +41,20 @@ export default function EmployeeEdit(props) {
   const handleEditEmployee = () => {
     setIsEdit(false);
     setEnable(!enable);
-    // setTemp(thisEmployee);
-  };
+    };
 
-  //'http://localhost:3001/api/employees/' + employeeId.toString();
-  //
-  const handleSaveEmployee = () => {
+    const handleSaveEmployee = () => {
+      
     if (validateEmployee(employee)) {
       api.updateEmployee(employee.id_employee, employee).then((res) => {
         if (res) {
           dispatch(editEmployee(employee));
-          swal("Asset updated successfully!");
+          swal("Employee updated successfully!");
+          //pos correccion he agregado la navegacion hacia el menu inicial de employees
+          navigate('/');
           setIsEdit(false);
           setEnable(true);
+          
         }
       });
     }
